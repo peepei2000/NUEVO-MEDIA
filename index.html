@@ -52,12 +52,16 @@
   .opt-btn .radio{width:20px;height:20px;min-width:20px;border:2px solid var(--text-muted);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .25s ease}
   .opt-btn.selected .radio{border-color:var(--accent);background:var(--accent)}
   .opt-btn.selected .radio::after{content:'';width:8px;height:8px;background:white;border-radius:50%}
+  .opt-btn .check{width:20px;height:20px;min-width:20px;border:2px solid var(--text-muted);border-radius:6px;display:flex;align-items:center;justify-content:center;transition:all .25s ease}
+  .opt-btn.selected .check{border-color:var(--accent);background:var(--accent)}
+  .opt-btn.selected .check::after{content:'✓';color:#fff;font-size:13px;font-weight:700;line-height:1}
   .text-input{width:100%;padding:16px 20px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border-color .25s ease}
   .text-input:focus{border-color:rgba(108,92,231,0.4)}
   .text-input::placeholder{color:var(--text-muted)}
   textarea.text-input{min-height:120px;resize:vertical;line-height:1.6}
   .input-group{margin-bottom:16px}
   .input-label{font-size:13px;color:var(--text-dim);font-weight:600;margin-bottom:8px;display:block;letter-spacing:.3px}
+  .otro-input{margin-top:10px}
   .btn-row{display:flex;gap:12px;margin-top:28px}
   .btn{flex:1;padding:16px 24px;border:none;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s ease;letter-spacing:.3px}
   .btn:disabled{opacity:.3;cursor:not-allowed}
@@ -81,6 +85,11 @@
   .dq-reason{display:inline-block;padding:14px 24px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:12px;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--red);font-weight:500;margin-bottom:28px}
   .dq-cta{font-size:14px;color:var(--text-muted)}
   .dq-cta a{color:var(--accent-light);text-decoration:none}
+  .process-box{max-width:460px;margin:0 auto 28px;text-align:left;background:var(--surface-2);border:1px solid var(--green-border);border-radius:16px;padding:22px 24px}
+  .process-box h4{font-family:'Sora',sans-serif;color:var(--green);font-size:15px;margin-bottom:12px}
+  .process-box ol{margin:0 0 0 18px;font-size:14px;color:var(--text-dim);line-height:1.9}
+  .process-box ol strong{color:var(--text)}
+  .process-box .note{margin-top:14px;font-size:13px;color:var(--text-muted);line-height:1.6}
   .btn-submit{margin-top:32px;background:linear-gradient(135deg,var(--green),#00a884);color:white;padding:18px 48px;border:none;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(0,184,148,0.25);transition:all .25s ease}
   .btn-submit:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 6px 28px rgba(0,184,148,0.35)}
   .btn-submit:disabled{opacity:.5;cursor:not-allowed;transform:none}
@@ -109,7 +118,7 @@
   <div class="header">
     <div class="logo-badge"><div class="dot"></div> Aristeia Growth Consulting</div>
     <h1>Media Buyer & <span class="gradient">Estratega de Anuncios</span></h1>
-    <p class="header-sub">Responde estas preguntas para ver si calificas. Solo te tomará <strong>5 minutos</strong>.</p>
+    <p class="header-sub">Responde estas preguntas para ver si calificas. Solo te tomará <strong>6 minutos</strong>.</p>
     <div class="chips">
       <div class="chip"><span>💰</span> Base <span class="val">$800-$2.2K USD</span>/mes + bonos</div>
       <div class="chip"><span>🌎</span> 100% remoto</div>
@@ -151,9 +160,9 @@
   <div class="progress-wrap" id="progressWrap">
     <div class="progress-header">
       <span class="progress-label">Progreso</span>
-      <span class="progress-step" id="stepCounter">1 / 13</span>
+      <span class="progress-step" id="stepCounter">1 / 20</span>
     </div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:7.7%"></div></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:5%"></div></div>
   </div>
 
   <!-- ALREADY SUBMITTED -->
@@ -173,8 +182,9 @@
       <div class="input-group"><label class="input-label">Nombre completo *</label><input type="text" class="text-input" id="inp_name" placeholder="Tu nombre y apellido" oninput="checkStep0()"></div>
       <div class="input-group"><label class="input-label">Email *</label><input type="email" class="text-input" id="inp_email" placeholder="tu@email.com" oninput="checkStep0()"></div>
       <div class="dup-banner" id="dupBanner">⚠️ Este email ya fue registrado. Solo se permite una postulación por persona.</div>
-      <div class="input-group"><label class="input-label">País *</label><input type="text" class="text-input" id="inp_country" placeholder="Ej: Argentina, México, Colombia..." oninput="checkStep0()"></div>
+      <div class="input-group"><label class="input-label">País de residencia *</label><input type="text" class="text-input" id="inp_country" placeholder="Ej: Argentina, México, Colombia..." oninput="checkStep0()"></div>
       <div class="input-group"><label class="input-label">WhatsApp *</label><input type="text" class="text-input" id="inp_phone" placeholder="+54 9 11 1234-5678" oninput="checkStep0()"></div>
+      <div class="input-group"><label class="input-label">Perfil de LinkedIn (URL) *</label><input type="url" class="text-input" id="inp_linkedin" placeholder="https://www.linkedin.com/in/tu-perfil" oninput="checkStep0()"></div>
     </div>
     <div class="btn-row"><button class="btn btn-primary" id="next0" disabled>Comenzar →</button></div>
     <div class="sending-msg" id="emailChecking"><div class="spinner"></div> Verificando email...</div>
@@ -204,34 +214,63 @@
   <!-- STEP 8: Seguir metodología -->
   <div class="step" id="step8"><div class="q-card"><div class="q-number">Pregunta 08</div><div class="q-title">¿Cómo te adaptas a seguir una metodología y SOPs probados?</div><div class="q-desc">En Aristeia tenemos la metodología de Golden Offer y SOPs de contenido. Debes ejecutarlos con precisión antes de proponer cambios propios.</div><div class="warning-tag">⚡ Buscamos perfil coachable</div><div class="options" data-step="8"><div class="opt-btn" data-value="Mi propio método" data-dq="true"><div class="radio"></div>Prefiero siempre usar mi propio método</div><div class="opt-btn" data-value="Me cuesta adaptarme" data-dq="true"><div class="radio"></div>Me cuesta seguir metodologías externas</div><div class="opt-btn" data-value="Sigo y adapto" data-dq="false"><div class="radio"></div>Sigo la metodología y la adapto a mi estilo</div><div class="opt-btn" data-value="100% sistema" data-dq="false"><div class="radio"></div>Ejecuto el sistema al 100% antes de proponer mejoras</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(7)">←</button><button class="btn btn-primary" id="next8" disabled>Continuar →</button></div></div>
 
-  <!-- STEP 9: Expectativa salarial -->
-  <div class="step" id="step9"><div class="q-card"><div class="q-number">Pregunta 09</div><div class="q-title">¿Cuál es tu expectativa de ingresos mensuales en este rol?</div><div class="q-desc">La base crece con el nivel: Junior $800-$1.200, Intermediate $1.200-$1.700, Senior $1.700-$2.200 + bonos (techo $3.000). Queremos alinear expectativas desde el inicio.</div><div class="options" data-step="9"><div class="opt-btn" data-value="Menos de $800" data-dq="false"><div class="radio"></div>Menos de $800 USD/mes</div><div class="opt-btn" data-value="$800-$1.200" data-dq="false"><div class="radio"></div>Entre $800 y $1.200 USD/mes</div><div class="opt-btn" data-value="$1.200-$1.700" data-dq="false"><div class="radio"></div>Entre $1.200 y $1.700 USD/mes</div><div class="opt-btn" data-value="$1.700-$2.200" data-dq="false"><div class="radio"></div>Entre $1.700 y $2.200 USD/mes</div><div class="opt-btn" data-value="Más de $2.200" data-dq="false"><div class="radio"></div>Más de $2.200 USD/mes</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(8)">←</button><button class="btn btn-primary" id="next9" disabled>Continuar →</button></div></div>
+  <!-- STEP 9: Presupuesto máximo gestionado -->
+  <div class="step" id="step9"><div class="q-card"><div class="q-number">Pregunta 09</div><div class="q-title">¿Cuál es el presupuesto publicitario mensual más alto que has gestionado?</div><div class="q-desc">Suma de la inversión que administraste en un mismo mes (todas las cuentas). Si nunca has gestionado presupuesto real, elige la primera opción.</div><div class="options" data-step="9"><div class="opt-btn" data-value="Menos de $1.000" data-dq="false"><div class="radio"></div>Menos de $1.000 USD/mes</div><div class="opt-btn" data-value="$1.000-$5.000" data-dq="false"><div class="radio"></div>$1.000 – $5.000 USD/mes</div><div class="opt-btn" data-value="$5.000-$20.000" data-dq="false"><div class="radio"></div>$5.000 – $20.000 USD/mes</div><div class="opt-btn" data-value="$20.000-$100.000" data-dq="false"><div class="radio"></div>$20.000 – $100.000 USD/mes</div><div class="opt-btn" data-value="Más de $100.000" data-dq="false"><div class="radio"></div>Más de $100.000 USD/mes</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(8)">←</button><button class="btn btn-primary" id="next9" disabled>Continuar →</button></div></div>
 
-  <!-- STEP 10: Formación -->
-  <div class="step" id="step10">
+  <!-- STEP 10: Plataformas / herramientas (multi) -->
+  <div class="step" id="step10"><div class="q-card"><div class="q-number">Pregunta 10</div><div class="q-title">¿Qué plataformas y herramientas has gestionado?</div><div class="q-desc">Marca todas las que hayas usado en proyectos reales. Puedes elegir varias.</div><div class="options" data-step="10" data-multi="true"><div class="opt-btn" data-value="Meta Ads"><div class="check"></div>Meta Ads (Facebook / Instagram)</div><div class="opt-btn" data-value="Google Ads"><div class="check"></div>Google Ads (Search / Shopping / Display)</div><div class="opt-btn" data-value="YouTube Ads"><div class="check"></div>YouTube Ads</div><div class="opt-btn" data-value="TikTok Ads"><div class="check"></div>TikTok Ads</div><div class="opt-btn" data-value="Google Analytics 4"><div class="check"></div>Google Analytics 4</div><div class="opt-btn" data-value="Tag Manager / Pixel"><div class="check"></div>Google Tag Manager / Pixel</div><div class="opt-btn" data-value="GoHighLevel / CRM"><div class="check"></div>GoHighLevel (GHL) u otro CRM</div><div class="opt-btn" data-value="CapCut / edición video"><div class="check"></div>CapCut u otra edición de video</div></div><input type="text" class="text-input otro-input" id="otro10" placeholder="Otro (especifica)..." oninput="updateMultiById('10')"></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(9)">←</button><button class="btn btn-primary" id="next10" disabled>Continuar →</button></div></div>
+
+  <!-- STEP 11: Industrias (multi) -->
+  <div class="step" id="step11"><div class="q-card"><div class="q-number">Pregunta 11</div><div class="q-title">¿Con qué industrias u objetivos has trabajado?</div><div class="q-desc">Marca todas las que apliquen. Puedes elegir varias.</div><div class="options" data-step="11" data-multi="true"><div class="opt-btn" data-value="Salud / Estética / Clínicas"><div class="check"></div>Salud / Estética / Clínicas</div><div class="opt-btn" data-value="Negocios locales"><div class="check"></div>Negocios locales</div><div class="opt-btn" data-value="Generación de leads / servicios"><div class="check"></div>Generación de leads / servicios</div><div class="opt-btn" data-value="E-commerce"><div class="check"></div>E-commerce</div><div class="opt-btn" data-value="Infoproductos / cursos"><div class="check"></div>Infoproductos / cursos online</div><div class="opt-btn" data-value="Inmobiliaria"><div class="check"></div>Inmobiliaria</div></div><input type="text" class="text-input otro-input" id="otro11" placeholder="Otro (especifica)..." oninput="updateMultiById('11')"></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(10)">←</button><button class="btn btn-primary" id="next11" disabled>Continuar →</button></div></div>
+
+  <!-- STEP 12: Certificaciones (multi) -->
+  <div class="step" id="step12"><div class="q-card"><div class="q-number">Pregunta 12</div><div class="q-title">¿Tienes alguna certificación o formación formal en pauta?</div><div class="q-desc">Marca lo que tengas. Si no tienes ninguna aún, márcalo igual y sigue.</div><div class="options" data-step="12" data-multi="true"><div class="opt-btn" data-value="Meta Blueprint / Meta Certified"><div class="check"></div>Meta Blueprint / Meta Certified</div><div class="opt-btn" data-value="Google Ads (cualquiera)"><div class="check"></div>Certificación de Google Ads</div><div class="opt-btn" data-value="Curso/mentoría de Media Buying"><div class="check"></div>Curso o mentoría de Media Buying</div><div class="opt-btn" data-value="Ninguna aún"><div class="check"></div>Ninguna aún</div></div><input type="text" class="text-input otro-input" id="otro12" placeholder="Otra (especifica)..." oninput="updateMultiById('12')"></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(11)">←</button><button class="btn btn-primary" id="next12" disabled>Continuar →</button></div></div>
+
+  <!-- STEP 13: Skill test - eventos de optimización (multi) -->
+  <div class="step" id="step13"><div class="q-card"><div class="q-number">Pregunta 13 — mini prueba</div><div class="q-title">Una clínica estética quiere llenar la agenda de un tratamiento facial premium en las próximas 4 semanas con campañas en Meta. ¿Por qué evento(s) optimizarías la campaña principal?</div><div class="q-desc">Elige lo que realmente usarías. Puedes marcar más de uno.</div><div class="warning-tag">⚡ Mini-prueba de criterio</div><div class="options" data-step="13" data-multi="true"><div class="opt-btn" data-value="Alcance"><div class="check"></div>Alcance</div><div class="opt-btn" data-value="Clics en el enlace"><div class="check"></div>Clics en el enlace</div><div class="opt-btn" data-value="Vistas de landing"><div class="check"></div>Vistas de la página de destino</div><div class="opt-btn" data-value="Interacción / ThruPlay"><div class="check"></div>Interacción / ThruPlay</div><div class="opt-btn" data-value="Mensajes (WhatsApp/IG)"><div class="check"></div>Mensajes (WhatsApp / Instagram)</div><div class="opt-btn" data-value="Clientes potenciales (Lead)"><div class="check"></div>Clientes potenciales (formulario de Lead)</div><div class="opt-btn" data-value="Conversión: cita agendada"><div class="check"></div>Conversión personalizada: cita agendada</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(12)">←</button><button class="btn btn-primary" id="next13" disabled>Continuar →</button></div></div>
+
+  <!-- STEP 14: Skill test - % presupuesto (number) -->
+  <div class="step" id="step14">
     <div class="q-card">
-      <div class="q-number">Pregunta 10</div>
-      <div class="q-title">¿Qué formación has tenido en Meta Ads, marketing o creatividad, y cómo te sigues formando?</div>
-      <div class="q-desc">Mentorías, cursos, certificaciones, libros, comunidades. Sé específico con nombres.</div>
-      <textarea class="text-input" id="formacion" placeholder="Ej: Hice el curso de Media Buying de X, tengo certificación de Meta, sigo a Y, estoy en la comunidad Z..."></textarea>
+      <div class="q-number">Pregunta 14 — mini prueba</div>
+      <div class="q-title">En ese mismo escenario, ¿qué % del presupuesto total asignarías al evento de conversión principal (mensajes / cita agendada)?</div>
+      <div class="q-desc">Escribe un número del 0 al 100, sin el símbolo % ni otros caracteres.</div>
+      <input type="number" min="0" max="100" class="text-input" id="skill_pct" placeholder="Ej: 70" oninput="checkPct()">
     </div>
-    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(9)">←</button><button class="btn btn-primary" id="next10" disabled>Continuar →</button></div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(13)">←</button><button class="btn btn-primary" id="next14" disabled>Continuar →</button></div>
   </div>
 
-  <!-- STEP 11: Caso práctico -->
-  <div class="step" id="step11">
+  <!-- STEP 15: Caso práctico -->
+  <div class="step" id="step15">
     <div class="q-card">
-      <div class="q-number">Pregunta 11 — caso práctico</div>
+      <div class="q-number">Pregunta 15 — caso práctico</div>
       <div class="q-title">Una clínica lleva 7 días activa: CPL de 2.800 CLP (objetivo &lt;1.000), frecuencia 3.2 y solo 4 agendas en el mes (meta 30). Tienes 14 días para dar vuelta la cuenta.</div>
       <div class="q-desc">¿Qué haces y en qué orden? Sé concreto: qué revisas primero, qué cambias en oferta/creativo/segmentación y cómo decides escalar o frenar.</div>
       <div class="warning-tag">⚡ Queremos ver tu criterio de diagnóstico y optimización</div>
       <textarea class="text-input" id="caso_answer" placeholder="Describe tu plan de acción paso a paso..."></textarea>
     </div>
-    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(10)">←</button><button class="btn btn-primary" id="next11" disabled>Continuar →</button></div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(14)">←</button><button class="btn btn-primary" id="next15" disabled>Continuar →</button></div>
   </div>
 
-  <!-- STEP 12: LOOM obligatorio -->
-  <div class="step" id="step12">
+  <!-- STEP 16: Expectativa salarial -->
+  <div class="step" id="step16"><div class="q-card"><div class="q-number">Pregunta 16</div><div class="q-title">¿Cuál es tu expectativa de ingresos mensuales en este rol?</div><div class="q-desc">La base crece con el nivel: Junior $800-$1.200, Intermediate $1.200-$1.700, Senior $1.700-$2.200 + bonos (techo $3.000). Queremos alinear expectativas desde el inicio.</div><div class="options" data-step="16"><div class="opt-btn" data-value="Menos de $800" data-dq="false"><div class="radio"></div>Menos de $800 USD/mes</div><div class="opt-btn" data-value="$800-$1.200" data-dq="false"><div class="radio"></div>Entre $800 y $1.200 USD/mes</div><div class="opt-btn" data-value="$1.200-$1.700" data-dq="false"><div class="radio"></div>Entre $1.200 y $1.700 USD/mes</div><div class="opt-btn" data-value="$1.700-$2.200" data-dq="false"><div class="radio"></div>Entre $1.700 y $2.200 USD/mes</div><div class="opt-btn" data-value="Más de $2.200" data-dq="false"><div class="radio"></div>Más de $2.200 USD/mes</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(15)">←</button><button class="btn btn-primary" id="next16" disabled>Continuar →</button></div></div>
+
+  <!-- STEP 17: Atribución -->
+  <div class="step" id="step17"><div class="q-card"><div class="q-number">Pregunta 17</div><div class="q-title">¿Dónde viste esta oferta?</div><div class="q-desc">Nos ayuda a saber qué canal funciona mejor.</div><div class="options" data-step="17"><div class="opt-btn" data-value="LinkedIn" data-dq="false"><div class="radio"></div>LinkedIn</div><div class="opt-btn" data-value="Anuncio en Facebook/Instagram" data-dq="false"><div class="radio"></div>Un anuncio en Facebook / Instagram</div><div class="opt-btn" data-value="Publicación orgánica" data-dq="false"><div class="radio"></div>Una publicación orgánica (IG / TikTok / LinkedIn)</div><div class="opt-btn" data-value="Referido / recomendación" data-dq="false"><div class="radio"></div>Referido o recomendación</div><div class="opt-btn" data-value="Grupo o comunidad" data-dq="false"><div class="radio"></div>Un grupo o comunidad</div><div class="opt-btn" data-value="Otro" data-dq="false"><div class="radio"></div>Otro</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(16)">←</button><button class="btn btn-primary" id="next17" disabled>Continuar →</button></div></div>
+
+  <!-- STEP 18: Formación -->
+  <div class="step" id="step18">
+    <div class="q-card">
+      <div class="q-number">Pregunta 18</div>
+      <div class="q-title">Cuéntanos cómo te formaste en Meta Ads/marketing y cómo te sigues actualizando</div>
+      <div class="q-desc">Mentorías, cursos, referentes, comunidades. Sé específico con nombres.</div>
+      <textarea class="text-input" id="formacion" placeholder="Ej: Aprendí con el curso de X, tuve mentoría de Y, sigo a Z, estoy en la comunidad..."></textarea>
+    </div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(17)">←</button><button class="btn btn-primary" id="next18" disabled>Continuar →</button></div>
+  </div>
+
+  <!-- STEP 19: LOOM obligatorio -->
+  <div class="step" id="step19">
     <div class="q-card">
       <div class="q-number">Paso final — obligatorio</div>
       <div class="q-title">Envía tu video de Loom</div>
@@ -249,7 +288,7 @@
         <input type="url" class="text-input" id="inp_loom" placeholder="https://www.loom.com/share/..." oninput="checkLoom()">
       </div>
     </div>
-    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(11)">←</button><button class="btn btn-primary" id="next12" disabled>Ver resultado →</button></div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(18)">←</button><button class="btn btn-primary" id="next19" disabled>Ver resultado →</button></div>
   </div>
 
   <!-- DQ -->
@@ -266,7 +305,16 @@
   <div class="dq-screen" id="passScreen">
     <div class="dq-icon pass">✓</div>
     <div class="dq-title pass">¡Cumples con el perfil!</div>
-    <p class="dq-msg">Tu perfil coincide con lo que buscamos. Confirma tu postulación y nuestro equipo revisará tu caso para los siguientes pasos.</p>
+    <p class="dq-msg">Tu perfil coincide con lo que buscamos. Confirma tu postulación para entrar al proceso.</p>
+    <div class="process-box">
+      <h4>Proceso de selección</h4>
+      <ol>
+        <li><strong>Este formulario</strong></li>
+        <li><strong>Prueba de aptitud</strong> para evaluar tus skills</li>
+        <li><strong>Entrevista personal</strong></li>
+      </ol>
+      <p class="note">Si avanzas, te contactamos por email o WhatsApp en ~2 días hábiles. Revisa tu carpeta de spam por si acaso.</p>
+    </div>
     <button class="btn-submit" id="submitBtn" onclick="submitFormFn()">Confirmar postulación →</button>
     <div class="sending-msg" id="passSending"><div class="spinner"></div> Enviando postulación...</div>
     <div class="error-msg" id="passError"></div>
@@ -276,7 +324,7 @@
   <div class="dq-screen" id="submittedScreen">
     <div class="dq-icon pass">📨</div>
     <div class="dq-title pass">¡Postulación enviada!</div>
-    <p class="dq-msg">Recibimos tu información y tu video. Si avanzas en el proceso, te contactaremos por WhatsApp o email en los próximos días.</p>
+    <p class="dq-msg">Recibimos tu información y tu video. Si avanzas en el proceso, te contactaremos por WhatsApp o email en los próximos días. Revisa tu spam.</p>
     <p class="dq-cta">Síguenos en <a href="#">@aristeiagrowth</a></p>
   </div>
 
@@ -285,14 +333,16 @@
 <script>
 // ============================================================
 //  PEGA AQUÍ TU URL DE GOOGLE APPS SCRIPT
-//  (debe ser la implementación del backend de Media Buyer)
+//  (debe ser la implementación del backend de Media Buyer,
+//   con acceso "Cualquier usuario")
 // ============================================================
 var WEBAPP_URL = 'https://script.google.com/a/macros/itsaristeia.com/s/AKfycbzbj8J0WSPkty-qxxwVDhtl41O5PSLKwIpGEhrI6bxb1sztJRqhoVUa2rC7pdYW3dGl/exec';
 // ============================================================
 
-var answers = {};
-var totalSteps = 13;
-var lastDqStep = 9; // hasta este step hay DQ
+var answers = {};   // single-select:  answers[step] = {value, dq}
+var multi = {};     // multi-select:   multi[step] = [valores...]
+var totalSteps = 20;
+var lastDqStep = 8; // hasta este step hay DQ
 var emailOk = false;
 var dqReasons = {
   1:'Requisito: rango de edad preferido (hasta 32 años)',
@@ -302,10 +352,9 @@ var dqReasons = {
   5:'Requisito: capacidad de producir contenido creativo (copy, estáticos o video)',
   6:'Requisito: disponibilidad full-time 9am-7pm Chile',
   7:'Requisito: experiencia previa usando un CRM',
-  8:'Requisito: perfil coachable, capacidad de seguir la metodología y SOPs',
-  9:'Requisito: expectativa salarial alineada al rol'
+  8:'Requisito: perfil coachable, capacidad de seguir la metodología y SOPs'
 };
-var STORAGE_KEY = 'aristeia_mediabuyer_v1';
+var STORAGE_KEY = 'aristeia_mediabuyer_v2';
 
 // Check if already applied
 (function(){
@@ -325,7 +374,8 @@ function checkStep0() {
   var e = document.getElementById('inp_email').value.trim();
   var c = document.getElementById('inp_country').value.trim();
   var p = document.getElementById('inp_phone').value.trim();
-  var basicValid = n.length >= 2 && e.includes('@') && e.includes('.') && c.length >= 2 && p.length >= 8;
+  var li = document.getElementById('inp_linkedin').value.trim();
+  var basicValid = n.length >= 2 && e.includes('@') && e.includes('.') && c.length >= 2 && p.length >= 8 && li.toLowerCase().indexOf('linkedin.') !== -1;
   document.getElementById('dupBanner').classList.remove('active');
   emailOk = false;
   if (basicValid) {
@@ -355,18 +405,45 @@ function checkStep0() {
   }
 }
 
-// Options
-document.querySelectorAll('.opt-btn').forEach(function(b){
+// Single-select options
+document.querySelectorAll('.options:not([data-multi="true"]) .opt-btn').forEach(function(b){
   b.addEventListener('click', function(){
-    this.closest('.options').querySelectorAll('.opt-btn').forEach(function(x){ x.classList.remove('selected'); });
+    var box = this.closest('.options');
+    box.querySelectorAll('.opt-btn').forEach(function(x){ x.classList.remove('selected'); });
     this.classList.add('selected');
-    var s = this.closest('.options').dataset.step;
+    var s = box.dataset.step;
     answers[s] = { value: this.dataset.value, dq: this.dataset.dq === 'true' };
     document.getElementById('next' + s).disabled = false;
   });
 });
 
-// Text input listeners
+// Multi-select options
+document.querySelectorAll('.options[data-multi="true"] .opt-btn').forEach(function(b){
+  b.addEventListener('click', function(){
+    this.classList.toggle('selected');
+    updateMulti(this.closest('.options'));
+  });
+});
+function updateMulti(box){
+  var s = box.dataset.step;
+  var vals = [];
+  box.querySelectorAll('.opt-btn.selected').forEach(function(x){ vals.push(x.dataset.value); });
+  multi[s] = vals;
+  var otro = document.getElementById('otro' + s);
+  var hasOtro = otro && otro.value.trim().length > 0;
+  document.getElementById('next' + s).disabled = !(vals.length > 0 || hasOtro);
+}
+function updateMultiById(s){
+  updateMulti(document.querySelector('.options[data-step="' + s + '"]'));
+}
+function getMulti(s){
+  var arr = (multi[s] || []).slice();
+  var otro = document.getElementById('otro' + s);
+  if (otro && otro.value.trim()) arr.push('Otro: ' + otro.value.trim());
+  return arr.join(', ');
+}
+
+// Text / number listeners
 document.getElementById('formacion').addEventListener('input', checkFormacion);
 document.getElementById('caso_answer').addEventListener('input', checkCaso);
 
@@ -397,14 +474,19 @@ function goToStep(n) {
 }
 
 function checkFormacion() {
-  document.getElementById('next10').disabled = document.getElementById('formacion').value.trim().length < 30;
+  document.getElementById('next18').disabled = document.getElementById('formacion').value.trim().length < 30;
 }
 function checkCaso() {
-  document.getElementById('next11').disabled = document.getElementById('caso_answer').value.trim().length < 40;
+  document.getElementById('next15').disabled = document.getElementById('caso_answer').value.trim().length < 40;
+}
+function checkPct() {
+  var v = document.getElementById('skill_pct').value.trim();
+  var num = Number(v);
+  document.getElementById('next14').disabled = !(v !== '' && !isNaN(num) && num >= 0 && num <= 100);
 }
 function checkLoom() {
   var v = document.getElementById('inp_loom').value.trim();
-  document.getElementById('next12').disabled = !(v.includes('loom.com') || v.includes('youtu') || v.includes('drive.google'));
+  document.getElementById('next19').disabled = !(v.includes('loom.com') || v.includes('youtu') || v.includes('drive.google'));
 }
 
 function showDQ(step) {
@@ -433,6 +515,7 @@ function buildPayload(estado, razonDQ) {
     email: document.getElementById('inp_email').value.trim(),
     pais: document.getElementById('inp_country').value.trim(),
     whatsapp: document.getElementById('inp_phone').value.trim(),
+    linkedin: document.getElementById('inp_linkedin').value.trim(),
     estado: estado,
     razon_dq: razonDQ || '',
     edad: answers[1] ? answers[1].value : '',
@@ -443,9 +526,16 @@ function buildPayload(estado, razonDQ) {
     disponibilidad: answers[6] ? answers[6].value : '',
     crm: answers[7] ? answers[7].value : '',
     metodologia: answers[8] ? answers[8].value : '',
-    expectativa_salarial: answers[9] ? answers[9].value : '',
-    formacion: document.getElementById('formacion') ? document.getElementById('formacion').value.trim() : '',
+    presupuesto_max: answers[9] ? answers[9].value : '',
+    plataformas: getMulti(10),
+    industrias: getMulti(11),
+    certificaciones: getMulti(12),
+    skill_eventos: getMulti(13),
+    skill_presupuesto_pct: document.getElementById('skill_pct') ? document.getElementById('skill_pct').value.trim() : '',
     caso_practico: document.getElementById('caso_answer') ? document.getElementById('caso_answer').value.trim() : '',
+    expectativa_salarial: answers[16] ? answers[16].value : '',
+    fuente: answers[17] ? answers[17].value : '',
+    formacion: document.getElementById('formacion') ? document.getElementById('formacion').value.trim() : '',
     loom_url: document.getElementById('inp_loom') ? document.getElementById('inp_loom').value.trim() : ''
   };
 }
