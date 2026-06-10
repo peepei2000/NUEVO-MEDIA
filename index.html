@@ -62,6 +62,17 @@
   .input-group{margin-bottom:16px}
   .input-label{font-size:13px;color:var(--text-dim);font-weight:600;margin-bottom:8px;display:block;letter-spacing:.3px}
   .otro-input{margin-top:10px}
+  .data-table-wrap{overflow-x:auto;margin:0 0 22px;border:1px solid var(--border);border-radius:12px;-webkit-overflow-scrolling:touch}
+  .data-table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px}
+  .data-table th,.data-table td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap}
+  .data-table th{background:var(--surface-2);color:var(--text-dim);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.5px;text-transform:uppercase;font-weight:700}
+  .data-table th:first-child,.data-table td:first-child{text-align:left}
+  .data-table td{color:var(--text)}
+  .data-table tbody tr:last-child td{border-bottom:none}
+  .data-table .mono{font-family:'JetBrains Mono',monospace;color:var(--cyan)}
+  .data-table .muted{color:var(--text-muted)}
+  .no-capture{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none}
+  .capture-warn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:8px;font-size:12px;color:var(--red);font-weight:600;margin-bottom:14px}
   .btn-row{display:flex;gap:12px;margin-top:28px}
   .btn{flex:1;padding:16px 24px;border:none;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s ease;letter-spacing:.3px}
   .btn:disabled{opacity:.3;cursor:not-allowed}
@@ -70,6 +81,11 @@
   .btn-ghost{background:var(--surface-2);color:var(--text-dim);border:1px solid var(--border);flex:0;padding:16px 20px}
   .btn-ghost:hover{background:rgba(255,255,255,0.04)}
   .warning-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:var(--yellow-dim);border-radius:8px;font-size:12px;color:var(--yellow);font-weight:600;margin-bottom:18px}
+  .notice-box{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;background:var(--yellow-dim);border:1px solid var(--orange-border);border-radius:14px;margin-bottom:20px}
+  .notice-box .ni{font-size:22px;line-height:1.2;flex-shrink:0}
+  .notice-box .nt{font-size:13.5px;color:var(--yellow);line-height:1.6}
+  .notice-box .nt strong{color:#ffe1a0;font-weight:700}
+  .notice-box .nt a{color:#ffe1a0;font-weight:700}
   .alert-tag{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:10px;font-size:13px;color:var(--red);font-weight:600;margin-bottom:18px;line-height:1.5}
   .dq-screen{display:none;text-align:center;padding:60px 20px;animation:fadeUp .6s ease both}
   .dq-screen.active{display:block}
@@ -118,7 +134,7 @@
   <div class="header">
     <div class="logo-badge"><div class="dot"></div> Aristeia Growth Consulting</div>
     <h1>Media Buyer & <span class="gradient">Estratega de Anuncios</span></h1>
-    <p class="header-sub">Responde estas preguntas para ver si calificas. Solo te tomará <strong>6 minutos</strong>.</p>
+    <p class="header-sub">Responde estas preguntas para ver si calificas. Solo te tomará <strong>7 minutos</strong>.</p>
     <div class="chips">
       <div class="chip"><span>💰</span> <span class="val">$800-$4K USD</span>/mes</div>
       <div class="chip"><span>🌎</span> 100% remoto</div>
@@ -160,9 +176,9 @@
   <div class="progress-wrap" id="progressWrap">
     <div class="progress-header">
       <span class="progress-label">Progreso</span>
-      <span class="progress-step" id="stepCounter">1 / 20</span>
+      <span class="progress-step" id="stepCounter">1 / 22</span>
     </div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:5%"></div></div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:4.55%"></div></div>
   </div>
 
   <!-- ALREADY SUBMITTED -->
@@ -175,6 +191,10 @@
 
   <!-- STEP 0: Datos -->
   <div class="step active" id="step0">
+    <div class="notice-box">
+      <div class="ni">📹</div>
+      <div class="nt"><strong>Antes de empezar:</strong> al final te pediremos un <strong>video de Loom de presentación de máximo 3 minutos</strong> (obligatorio). Grábalo o tenlo listo antes de continuar — si recargas o cierras esta página <strong>puedes perder tu progreso</strong>. Puedes grabarlo gratis en <a href="https://www.loom.com" target="_blank" rel="noopener">loom.com</a>.</div>
+    </div>
     <div class="q-card">
       <div class="q-number">Datos de contacto</div>
       <div class="q-title">Primero, cuéntanos quién eres</div>
@@ -252,25 +272,104 @@
     <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(14)">←</button><button class="btn btn-primary" id="next15" disabled>Continuar →</button></div>
   </div>
 
-  <!-- STEP 16: Expectativa salarial -->
-  <div class="step" id="step16"><div class="q-card"><div class="q-number">Pregunta 16</div><div class="q-title">¿Cuál es tu expectativa de ingresos mensuales en este rol?</div><div class="q-desc">La compensación crece con tu nivel y resultados, en un rango de $800 a $4.000 USD/mes. Queremos alinear expectativas desde el inicio.</div><div class="options" data-step="16"><div class="opt-btn" data-value="Menos de $800" data-dq="false"><div class="radio"></div>Menos de $800 USD/mes</div><div class="opt-btn" data-value="$800-$1.500" data-dq="false"><div class="radio"></div>Entre $800 y $1.500 USD/mes</div><div class="opt-btn" data-value="$1.500-$2.500" data-dq="false"><div class="radio"></div>Entre $1.500 y $2.500 USD/mes</div><div class="opt-btn" data-value="$2.500-$4.000" data-dq="false"><div class="radio"></div>Entre $2.500 y $4.000 USD/mes</div><div class="opt-btn" data-value="Más de $4.000" data-dq="false"><div class="radio"></div>Más de $4.000 USD/mes</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(15)">←</button><button class="btn btn-primary" id="next16" disabled>Continuar →</button></div></div>
-
-  <!-- STEP 17: Atribución -->
-  <div class="step" id="step17"><div class="q-card"><div class="q-number">Pregunta 17</div><div class="q-title">¿Dónde viste esta oferta?</div><div class="q-desc">Nos ayuda a saber qué canal funciona mejor.</div><div class="options" data-step="17"><div class="opt-btn" data-value="LinkedIn" data-dq="false"><div class="radio"></div>LinkedIn</div><div class="opt-btn" data-value="Anuncio en Facebook/Instagram" data-dq="false"><div class="radio"></div>Un anuncio en Facebook / Instagram</div><div class="opt-btn" data-value="Publicación orgánica" data-dq="false"><div class="radio"></div>Una publicación orgánica (IG / TikTok / LinkedIn)</div><div class="opt-btn" data-value="Referido / recomendación" data-dq="false"><div class="radio"></div>Referido o recomendación</div><div class="opt-btn" data-value="Grupo o comunidad" data-dq="false"><div class="radio"></div>Un grupo o comunidad</div><div class="opt-btn" data-value="Otro" data-dq="false"><div class="radio"></div>Otro</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(16)">←</button><button class="btn btn-primary" id="next17" disabled>Continuar →</button></div></div>
-
-  <!-- STEP 18: Formación -->
-  <div class="step" id="step18">
+  <!-- STEP 16: Análisis de data real #1 (MIRADA DESCANSADA) -->
+  <div class="step" id="step16">
     <div class="q-card">
-      <div class="q-number">Pregunta 18</div>
+      <div class="q-number">Pregunta 16 — análisis de data</div>
+      <div class="q-title">Análisis de data real #1 (Media Buying)</div>
+      <div class="capture-warn">🚫 No tomes capturas — esta prueba es evaluada</div>
+      <div class="warning-tag">⚡ Caso real — justifica con números de la tabla</div>
+      <div class="q-desc">Estás gestionando los ads de una clínica. Esta es la data semanal de una campaña activa (<strong>"MIRADA DESCANSADA"</strong>). Cada fila es el corte de esa semana.</div>
+      <div class="data-table-wrap no-capture">
+        <table class="data-table">
+          <thead><tr><th>Semana</th><th>Leads totales</th><th>Agendas (1 sem)</th><th>Importe últ. 7 días</th><th>CAC</th><th>Cash collected</th></tr></thead>
+          <tbody>
+            <tr><td>9/3</td><td>41</td><td>2</td><td>27</td><td class="mono">13,5</td><td class="muted">119.990</td></tr>
+            <tr><td>16/3</td><td>137</td><td>3</td><td>60</td><td class="mono">20</td><td class="muted">0</td></tr>
+            <tr><td>23/3</td><td>211</td><td>3</td><td>62</td><td class="mono">20,7</td><td class="muted">0</td></tr>
+            <tr><td>30/3</td><td>302</td><td>8</td><td>94</td><td class="mono">11,8</td><td class="muted">119.990</td></tr>
+            <tr><td>6/4</td><td>397</td><td>2</td><td>104</td><td class="mono">52</td><td class="muted">0</td></tr>
+            <tr><td>13/4</td><td>522</td><td>11</td><td>123</td><td class="mono">11,2</td><td class="muted">3.000.000</td></tr>
+            <tr><td>20/4</td><td>647</td><td>3</td><td>126</td><td class="mono">42</td><td class="muted">0</td></tr>
+            <tr><td>27/4</td><td>803</td><td>8</td><td>124</td><td class="mono">15,5</td><td class="muted">0</td></tr>
+            <tr><td>4/5</td><td>934</td><td>6</td><td>123</td><td class="mono">20,5</td><td class="muted">0</td></tr>
+            <tr><td>11/5</td><td>1.098</td><td>10</td><td>132</td><td class="mono">13,2</td><td class="muted">—</td></tr>
+            <tr><td>18/5</td><td>1.241</td><td>6</td><td>139</td><td class="mono">23,2</td><td class="muted">—</td></tr>
+            <tr><td>25/5</td><td>1.345</td><td>3</td><td>139</td><td class="mono">46,3</td><td class="muted">—</td></tr>
+            <tr><td>1/6</td><td>1.476</td><td>2</td><td>159</td><td class="mono">79,5</td><td class="muted">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="q-desc" style="margin-bottom:18px">
+        <strong>Columnas:</strong> Leads totales = acumulado (no semanal) · Agendas = citas reservadas esa semana · Importe últ. 7 días = inversión de la semana · CAC = costo por agenda (inversión ÷ agendas).<br>
+        El registro de ventas (<em>cash collected</em>) está incompleto, así que enfoca tu análisis en la <strong>adquisición</strong> y la <strong>eficiencia de la agenda</strong>.<br><br>
+        <strong>Respondé (justificando con números):</strong><br>
+        1) ¿Qué observás en esta data? Diagnosticá apoyándote en los números.<br>
+        2) ¿Qué accionarías con esta campaña y por qué?<br>
+        3) ¿Sobre qué semanas basás tu decisión y por qué esas?
+      </div>
+      <textarea class="text-input" id="caso_data" placeholder="Tu análisis paso a paso, citando los números de la tabla..."></textarea>
+    </div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(15)">←</button><button class="btn btn-primary" id="next16" disabled>Continuar →</button></div>
+  </div>
+
+  <!-- STEP 17: Análisis de data real #2 (PIEL RADIANTE) -->
+  <div class="step" id="step17">
+    <div class="q-card">
+      <div class="q-number">Pregunta 17 — análisis de data</div>
+      <div class="q-title">Análisis de data real #2 (Media Buying)</div>
+      <div class="capture-warn">🚫 No tomes capturas — esta prueba es evaluada</div>
+      <div class="warning-tag">⚡ Caso real — justifica con números de la tabla</div>
+      <div class="q-desc">Otra campaña activa de la misma clínica (<strong>"PIEL RADIANTE"</strong>). Dato clave del cliente: <strong>el 100% de quien agenda asiste a su cita</strong> (agenda que se hace, agenda que llega).</div>
+      <div class="data-table-wrap no-capture">
+        <table class="data-table">
+          <thead><tr><th>Semana</th><th>Leads totales</th><th>Agendas (1 sem)</th><th>Asistió y pagó</th><th>Importe últ. 7 días</th><th>Cash collected</th><th>CAC</th><th>ROAS Cash</th></tr></thead>
+          <tbody>
+            <tr><td>16/3</td><td>31</td><td>4</td><td>1</td><td>30.000</td><td class="muted">54.990</td><td class="mono">6.000</td><td>1,83</td></tr>
+            <tr><td>23/2</td><td>66</td><td>6</td><td class="muted">—</td><td>34.000</td><td class="muted">—</td><td class="mono">5.667</td><td>0</td></tr>
+            <tr><td>30/3</td><td>109</td><td>3</td><td>1</td><td>39.000</td><td class="muted">54.990</td><td class="mono">9.750</td><td>1,41</td></tr>
+            <tr><td>6/4</td><td>180</td><td>6</td><td>1</td><td>70.000</td><td class="muted">54.990</td><td class="mono">10.000</td><td>0,79</td></tr>
+            <tr><td>20/4</td><td>251</td><td>9</td><td>0</td><td>86.000</td><td class="muted">—</td><td class="mono">9.556</td><td>0</td></tr>
+            <tr><td>27/4</td><td>291</td><td>9</td><td>0</td><td>105.000</td><td class="muted">—</td><td class="mono">11.667</td><td>0</td></tr>
+            <tr><td>4/5</td><td>370</td><td>9</td><td>0</td><td>102.000</td><td class="muted">—</td><td class="mono">11.333</td><td>0</td></tr>
+            <tr><td>11/5</td><td>449</td><td>7</td><td>0</td><td>104.000</td><td class="muted">—</td><td class="mono">14.857</td><td>0</td></tr>
+            <tr><td>18/5</td><td>517</td><td>10</td><td>1</td><td>102.000</td><td class="muted">—</td><td class="mono">9.273</td><td>0</td></tr>
+            <tr><td>25/5</td><td>596</td><td>13</td><td class="muted">—</td><td>105.000</td><td class="muted">—</td><td class="mono">8.077</td><td>0</td></tr>
+            <tr><td>1/6</td><td>654</td><td>5</td><td class="muted">—</td><td>105.000</td><td class="muted">—</td><td class="mono">21.000</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="q-desc" style="margin-bottom:18px">
+        <strong>Columnas:</strong> Leads totales = acumulado · Agendas = citas reservadas esa semana · Asistió y pagó = pacientes que llegaron y compraron · Importe = inversión de la semana · Cash collected = facturación de la semana · CAC / ROAS Cash = costo de adquisición y retorno.<br><br>
+        <strong>Respondé (justificando con números):</strong><br>
+        1) ¿Qué observás en esta data? Diagnosticá apoyándote en los números.<br>
+        2) ¿Qué accionarías con esta campaña y por qué?<br>
+        3) Si hay algo en la data que no te cierra para poder decidir, decí qué es y qué harías al respecto.
+      </div>
+      <textarea class="text-input" id="caso_data2" placeholder="Tu análisis paso a paso, citando los números de la tabla..."></textarea>
+    </div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(16)">←</button><button class="btn btn-primary" id="next17" disabled>Continuar →</button></div>
+  </div>
+
+  <!-- STEP 18: Expectativa salarial -->
+  <div class="step" id="step18"><div class="q-card"><div class="q-number">Pregunta 18</div><div class="q-title">¿Cuál es tu expectativa de ingresos mensuales en este rol?</div><div class="q-desc">La compensación crece con tu nivel y resultados, en un rango de $800 a $4.000 USD/mes. Queremos alinear expectativas desde el inicio.</div><div class="options" data-step="18"><div class="opt-btn" data-value="Menos de $800" data-dq="false"><div class="radio"></div>Menos de $800 USD/mes</div><div class="opt-btn" data-value="$800-$1.500" data-dq="false"><div class="radio"></div>Entre $800 y $1.500 USD/mes</div><div class="opt-btn" data-value="$1.500-$2.500" data-dq="false"><div class="radio"></div>Entre $1.500 y $2.500 USD/mes</div><div class="opt-btn" data-value="$2.500-$4.000" data-dq="false"><div class="radio"></div>Entre $2.500 y $4.000 USD/mes</div><div class="opt-btn" data-value="Más de $4.000" data-dq="false"><div class="radio"></div>Más de $4.000 USD/mes</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(17)">←</button><button class="btn btn-primary" id="next18" disabled>Continuar →</button></div></div>
+
+  <!-- STEP 19: Atribución -->
+  <div class="step" id="step19"><div class="q-card"><div class="q-number">Pregunta 19</div><div class="q-title">¿Dónde viste esta oferta?</div><div class="q-desc">Nos ayuda a saber qué canal funciona mejor.</div><div class="options" data-step="19"><div class="opt-btn" data-value="LinkedIn" data-dq="false"><div class="radio"></div>LinkedIn</div><div class="opt-btn" data-value="Anuncio en Facebook/Instagram" data-dq="false"><div class="radio"></div>Un anuncio en Facebook / Instagram</div><div class="opt-btn" data-value="Publicación orgánica" data-dq="false"><div class="radio"></div>Una publicación orgánica (IG / TikTok / LinkedIn)</div><div class="opt-btn" data-value="Referido / recomendación" data-dq="false"><div class="radio"></div>Referido o recomendación</div><div class="opt-btn" data-value="Grupo o comunidad" data-dq="false"><div class="radio"></div>Un grupo o comunidad</div><div class="opt-btn" data-value="Otro" data-dq="false"><div class="radio"></div>Otro</div></div></div><div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(18)">←</button><button class="btn btn-primary" id="next19" disabled>Continuar →</button></div></div>
+
+  <!-- STEP 20: Formación -->
+  <div class="step" id="step20">
+    <div class="q-card">
+      <div class="q-number">Pregunta 20</div>
       <div class="q-title">Cuéntanos cómo te formaste en Meta Ads/marketing y cómo te sigues actualizando</div>
       <div class="q-desc">Mentorías, cursos, referentes, comunidades. Sé específico con nombres.</div>
       <textarea class="text-input" id="formacion" placeholder="Ej: Aprendí con el curso de X, tuve mentoría de Y, sigo a Z, estoy en la comunidad..."></textarea>
     </div>
-    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(17)">←</button><button class="btn btn-primary" id="next18" disabled>Continuar →</button></div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(19)">←</button><button class="btn btn-primary" id="next20" disabled>Continuar →</button></div>
   </div>
 
-  <!-- STEP 19: LOOM obligatorio -->
-  <div class="step" id="step19">
+  <!-- STEP 21: LOOM obligatorio -->
+  <div class="step" id="step21">
     <div class="q-card">
       <div class="q-number">Paso final — obligatorio</div>
       <div class="q-title">Envía tu video de Loom</div>
@@ -288,7 +387,7 @@
         <input type="url" class="text-input" id="inp_loom" placeholder="https://www.loom.com/share/..." oninput="checkLoom()">
       </div>
     </div>
-    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(18)">←</button><button class="btn btn-primary" id="next19" disabled>Ver resultado →</button></div>
+    <div class="btn-row"><button class="btn btn-ghost" onclick="goToStep(20)">←</button><button class="btn btn-primary" id="next21" disabled>Ver resultado →</button></div>
   </div>
 
   <!-- DQ -->
@@ -341,7 +440,7 @@ var WEBAPP_URL = 'https://script.google.com/a/macros/itsaristeia.com/s/AKfycbzbj
 
 var answers = {};   // single-select:  answers[step] = {value, dq}
 var multi = {};     // multi-select:   multi[step] = [valores...]
-var totalSteps = 20;
+var totalSteps = 22;
 var lastDqStep = 8; // hasta este step hay DQ
 var emailOk = false;
 var dqReasons = {
@@ -354,7 +453,7 @@ var dqReasons = {
   7:'Requisito: experiencia previa usando un CRM',
   8:'Requisito: perfil coachable, capacidad de seguir la metodología y SOPs'
 };
-var STORAGE_KEY = 'aristeia_mediabuyer_v2';
+var STORAGE_KEY = 'aristeia_mediabuyer_v4';
 
 // Check if already applied
 (function(){
@@ -443,9 +542,19 @@ function getMulti(s){
   return arr.join(', ');
 }
 
+// Anti-captura (mínimo): bloquear copiar / clic derecho sobre las tablas
+document.querySelectorAll('.no-capture').forEach(function(el){
+  el.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+  el.addEventListener('copy', function(e){ e.preventDefault(); });
+  el.addEventListener('cut', function(e){ e.preventDefault(); });
+  el.addEventListener('dragstart', function(e){ e.preventDefault(); });
+});
+
 // Text / number listeners
 document.getElementById('formacion').addEventListener('input', checkFormacion);
 document.getElementById('caso_answer').addEventListener('input', checkCaso);
+document.getElementById('caso_data').addEventListener('input', checkCasoData);
+document.getElementById('caso_data2').addEventListener('input', checkCasoData2);
 
 // Navigation
 document.getElementById('next0').addEventListener('click', function(){ if (emailOk) goToStep(1); });
@@ -474,10 +583,16 @@ function goToStep(n) {
 }
 
 function checkFormacion() {
-  document.getElementById('next18').disabled = document.getElementById('formacion').value.trim().length < 30;
+  document.getElementById('next20').disabled = document.getElementById('formacion').value.trim().length < 30;
 }
 function checkCaso() {
   document.getElementById('next15').disabled = document.getElementById('caso_answer').value.trim().length < 40;
+}
+function checkCasoData() {
+  document.getElementById('next16').disabled = document.getElementById('caso_data').value.trim().length < 120;
+}
+function checkCasoData2() {
+  document.getElementById('next17').disabled = document.getElementById('caso_data2').value.trim().length < 120;
 }
 function checkPct() {
   var v = document.getElementById('skill_pct').value.trim();
@@ -486,7 +601,7 @@ function checkPct() {
 }
 function checkLoom() {
   var v = document.getElementById('inp_loom').value.trim();
-  document.getElementById('next19').disabled = !(v.includes('loom.com') || v.includes('youtu') || v.includes('drive.google'));
+  document.getElementById('next21').disabled = !(v.includes('loom.com') || v.includes('youtu') || v.includes('drive.google'));
 }
 
 function showDQ(step) {
@@ -533,8 +648,10 @@ function buildPayload(estado, razonDQ) {
     skill_eventos: getMulti(13),
     skill_presupuesto_pct: document.getElementById('skill_pct') ? document.getElementById('skill_pct').value.trim() : '',
     caso_practico: document.getElementById('caso_answer') ? document.getElementById('caso_answer').value.trim() : '',
-    expectativa_salarial: answers[16] ? answers[16].value : '',
-    fuente: answers[17] ? answers[17].value : '',
+    caso_data: document.getElementById('caso_data') ? document.getElementById('caso_data').value.trim() : '',
+    caso_data2: document.getElementById('caso_data2') ? document.getElementById('caso_data2').value.trim() : '',
+    expectativa_salarial: answers[18] ? answers[18].value : '',
+    fuente: answers[19] ? answers[19].value : '',
     formacion: document.getElementById('formacion') ? document.getElementById('formacion').value.trim() : '',
     loom_url: document.getElementById('inp_loom') ? document.getElementById('inp_loom').value.trim() : ''
   };
